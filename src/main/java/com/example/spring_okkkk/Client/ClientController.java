@@ -42,7 +42,7 @@ public class ClientController {
             return "client_form";
 
         } catch (ClientNotFoundException e) {
-            ra.addFlashAttribute("message","client add successfuly");
+            ra.addFlashAttribute("message","client edit successfuly");
             return "redirect:/client";
         }
     }
