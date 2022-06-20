@@ -42,8 +42,19 @@ public class ClientController {
             return "client_form";
 
         } catch (ClientNotFoundException e) {
-            ra.addFlashAttribute("message","client edit successfuly");
+            ra.addFlashAttribute("message",e.getMessage());
             return "redirect:/client";
         }
+    }
+    @GetMapping("/client/delete/{id}")
+    public String deletelient(@PathVariable("id") Integer id,RedirectAttributes ra){
+        try {
+            cltService.delete(id);
+            ra.addAttribute("message", "the client (ID:"+id+") is deleted");
+        } catch (ClientNotFoundException e) {
+            ra.addFlashAttribute("message",e.getMessage());
+
+        }
+        return "redirect:/client";
     }
 }

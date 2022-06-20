@@ -24,4 +24,11 @@ public class ClientService {
         }
         throw new ClientNotFoundException("on ne peut pas trouver le client ID="+id);
     }
+    public void delete(Integer id) throws ClientNotFoundException {
+        Long count = repo.countById(id);
+        if(count==null || count==0){
+            throw new ClientNotFoundException("on ne peut pas trouver le client ID="+id);
+        }
+        repo.deleteById(id);
+    }
 }
