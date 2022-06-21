@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.aksisweb.com/theme/fixed/layouts-1/table-data.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Feb 2021 22:28:59 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FixedPlus - Abonners</title>
+
+    <!-- Common Plugins -->
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables -->
+    <link href="assets/lib/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/lib/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/lib/datatables/buttons.dataTables.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom Css-->
+    <link href="assets/scss/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- ============================================================== -->
+<!-- 						Topbar Start 							-->
+<!-- ============================================================== -->
+<th th:include="topbar.html"></th>
+<!-- ============================================================== -->
+<!--                        Topbar End                              -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!--                        Right Side Start                        -->
+<!-- ============================================================== -->
+<th th:include="sidebar.html"></th>
+<!-- ============================================================== -->
+<!--                        Right Side End                          -->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- 						Navigation Start 						-->
+<!-- ============================================================== -->
+<th th:include="navigation.html"></th>
+<!-- ============================================================== -->
+<!-- 						Navigation End	 						-->
+<!-- ============================================================== -->
+
+
+<!-- ============================================================== -->
+<!-- 						Content Start	 						-->
+<!-- ============================================================== -->
+
+<div class="row page-header">
+    <div class="col-lg-6 align-self-center ">
+        <h2>Data Tables</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{index}">Home</a></li>
+            <li class="breadcrumb-item"><a th:href="@{abonners}">Data</a></li>
+            <li class="breadcrumb-item active">Data Abonners</li>
+        </ol>
+    </div>
+</div>
+
+<section class="main-content">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-default">
+                    Data Export Tables
+                    <div th:if="${message}" class="alert alert-success text-center">
+                        [[${message}]]
+                    </div>
+                    <div align="right"><a th:href="@{/abonner/new}" class="btn btn-outline-primary">add</a></div>
+                </div>
+                <div class="card-body">
+                    <table id="datatable2" class="table table-striped dt-responsive nowrap">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Abonnement</th>
+                            <th>Client</th>
+                            <th>Montant</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <th:block th:each="abonner : ${listabonners}">
+                            <tr>
+                                <td>[[${abonner.id}]]</td>
+                                <td>[[${abonner.date_abonnement}]]</td>
+                                <td>[[${abonner.ref_abonnement}]]</td>
+                                <td>[[${abonner.ref_client}]]</td>
+                                <td>[[${abonner.montant}]]</td>
+                                <td>
+                                    <a th:href="@{'/abonner/edit/' + ${abonner.id}}">edit</a>|
+                                    <a th:href="@{'/abonner/delete/' +${abonner.id}}">del</a>
+                                </td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <span>Copyright &copy; 2018 FixedPascovich</span>
+    </footer>
+
+
+</section>
+<!-- ============================================================== -->
+<!-- 						Content End		 						-->
+<!-- ============================================================== -->
+
+
+
+<!-- Common Plugins -->
+<script src="assets/lib/jquery/dist/jquery.min.js"></script>
+<script src="assets/lib/bootstrap/js/popper.min.js"></script>
+<script src="assets/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/lib/pace/pace.min.js"></script>
+<script src="assets/lib/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+<script src="assets/lib/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/lib/nano-scroll/jquery.nanoscroller.min.js"></script>
+<script src="assets/lib/metisMenu/metisMenu.min.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<!-- Datatables-->
+<script src="assets/lib/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/lib/datatables/dataTables.responsive.min.js"></script>
+
+<script src="assets/lib/datatables/dataTables.buttons.min.js"></script>
+<script src="assets/lib/datatables/jszip.min.js"></script>
+<script src="assets/lib/datatables/pdfmake.min.js"></script>
+<script src="assets/lib/datatables/vfs_fonts.js"></script>
+<script src="assets/lib/datatables/buttons.html5.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+
+        $('#datatable2').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+
+        $('#datatable3').DataTable( {
+            "scrollY":        "400px",
+            "scrollCollapse": true,
+            "paging":         false
+        } );
+    });
+
+</script>
+</body>
+
+<!-- Mirrored from www.aksisweb.com/theme/fixed/layouts-1/table-data.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 Feb 2021 22:29:11 GMT -->
+</html>
