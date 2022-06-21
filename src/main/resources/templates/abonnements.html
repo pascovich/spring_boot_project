@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FixedPlus - Clients</title>
+    <title>FixedPlus - Abonnements</title>
 
     <!-- Common Plugins -->
     <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,8 +64,8 @@
         <h2>Data Tables</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{index}">Home</a></li>
-            <li class="breadcrumb-item"><a th:href="@{clients}">Data</a></li>
-            <li class="breadcrumb-item active">Data Clients</li>
+            <li class="breadcrumb-item"><a th:href="@{abonnements}">Data</a></li>
+            <li class="breadcrumb-item active">Data Abonnements</li>
         </ol>
     </div>
 </div>
@@ -81,40 +81,28 @@
                     <div th:if="${message}" class="alert alert-success text-center">
                         [[${message}]]
                     </div>
-                    <div align="right"><a th:href="@{/client/new}" class="btn btn-outline-primary">add</a></div>
+                    <div align="right"><a th:href="@{/abonnement/new}" class="btn btn-outline-primary">add</a></div>
                 </div>
                 <div class="card-body">
                     <table id="datatable2" class="table table-striped dt-responsive nowrap">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nom</th>
-                            <th>Postnom</th>
-                            <th>Prenom</th>
-                            <th>Sexe</th>
-                            <th>Telephone</th>
-                            <th>Adresse</th>
-                            <th>Photo</th>
-                            <th>Describe_menage</th>
+                            <th>Type Abonnement</th>
+                            <th>Description</th>
                             <th>DB</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <th:block th:each="client : ${listclients}">
+                        <th:block th:each="abonnement : ${listabonnements}">
                             <tr>
-                                <td>[[${client.id}]]</td>
-                                <td>[[${client.nom}]]</td>
-                                <td>[[${client.postnom}]]</td>
-                                <td>[[${client.prenom}]]</td>
-                                <td>[[${client.sexe}]]</td>
-                                <td>[[${client.telephone}]]</td>
-                                <td>[[${client.adresse}]]</td>
-                                <td>[[${client.photo}]]</td>
-                                <td>[[${client.describe_menage}]]</td>
+                                <td>[[${abonnement.id}]]</td>
+                                <td>[[${abonnement.type_abonnement}]]</td>
+                                <td>[[${abonnement.description}]]</td>
                                 <td>
-                                    <a th:href="@{'/client/edit/' + ${client.id}}">edit</a>|
-                                    <a th:href="@{'/client/delete/' +${client.id}}">del</a>
+                                    <a th:href="@{'/abonnement/edit/' + ${abonnement.id}}">edit</a>|
+                                    <a th:href="@{'/abonnement/delete/' +${abonnement.id}}">del</a>
                                 </td>
                             </tr>
                         </th:block>
