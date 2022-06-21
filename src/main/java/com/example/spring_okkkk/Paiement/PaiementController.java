@@ -14,7 +14,7 @@ import java.util.List;
 public class PaiementController {
     @Autowired
     private PaiementService paieService;
-    @GetMapping("/Paiement")
+    @GetMapping("/paiement")
     public String showallpaiement(Model model){
         List<Paiement> listpaiements = paieService.paiementsAll();
         model.addAttribute("listpaiements",listpaiements);
@@ -23,7 +23,7 @@ public class PaiementController {
     }
     @GetMapping("/paiement/new")
     public String showPaiementForm(Model model){
-        model.addAttribute("Paiement", new Paiement());
+        model.addAttribute("paiement", new Paiement());
         model.addAttribute("pageTitle", "Add new Paiement");
 
         return"paiement_form";

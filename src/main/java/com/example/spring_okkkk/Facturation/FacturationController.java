@@ -24,7 +24,7 @@ public class FacturationController {
     }
     @GetMapping("/facturation/new")
     public String showFacturationForm(Model model){
-        model.addAttribute("Facturation", new Facturation());
+        model.addAttribute("facturation", new Facturation());
         model.addAttribute("pageTitle", "Add new facturation");
 
         return"facturation_form";

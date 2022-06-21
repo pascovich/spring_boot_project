@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FixedPlus - Facturations</title>
+    <title>FixedPlus - Paiements</title>
 
     <!-- Common Plugins -->
     <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -64,8 +64,8 @@
         <h2>Data Tables</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{index}">Home</a></li>
-            <li class="breadcrumb-item"><a th:href="@{facturations}">Data</a></li>
-            <li class="breadcrumb-item active">Data facturations</li>
+            <li class="breadcrumb-item"><a th:href="@{paiements}">Data</a></li>
+            <li class="breadcrumb-item active">Data paiements</li>
         </ol>
     </div>
 </div>
@@ -81,33 +81,34 @@
                     <div th:if="${message}" class="alert alert-success text-center">
                         [[${message}]]
                     </div>
-                    <div align="right"><a th:href="@{/facturation/new}" class="btn btn-outline-primary">add</a></div>
+                    <div align="right"><a th:href="@{/paiement/new}" class="btn btn-outline-primary">add</a></div>
                 </div>
                 <div class="card-body">
                     <table id="datatable2" class="table table-striped dt-responsive nowrap">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Num Facture</th>
-                            <th>Date facturation</th>
-                            <th>Consommation</th>
-                            <th>Montant</th>
-                            <th>Check Facture Paie</th>
+                            <th>facture</th>
+                            <th>Date paiement</th>
+                            <th>Motif</th>
+                            <th>Montant A payer</th>
+                            <th>Montant payer</th>
                             <th>DB</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        <th:block th:each="facturation : ${listfacturations}">
+                        <th:block th:each="paiement : ${listpaiements}">
                             <tr>
-                                <td>[[${facturation.id}]]</td>
-                                <td>[[${facturation.date_facture}]]</td>
-                                <td>[[${facturation.ref_consommation}]]</td>
-                                <td>[[${facturation.montant}]]</td>
-                                <td>[[${facturation.chek_fac_paie}]]</td>
+                                <td>[[${paiement.id}]]</td>
+                                <td>[[${paiement.ref_facture}]]</td>
+                                <td>[[${paiement.date_paie}]]</td>
+                                <td>[[${paiement.motiff}]]</td>
+                                <td>[[${paiement.montant_a_payer}]]</td>
+                                <td>[[${paiement.montant_payer}]]</td>
                                 <td>
-                                    <a th:href="@{'/client/edit/' + ${facturation.id}}">edit</a>|
-                                    <a th:href="@{'/client/delete/' +${facturation.id}}">del</a>
+                                    <a th:href="@{'/client/edit/' + ${paiement.id}}">edit</a>|
+                                    <a th:href="@{'/client/delete/' +${paiement.id}}">del</a>
                                 </td>
                             </tr>
                         </th:block>

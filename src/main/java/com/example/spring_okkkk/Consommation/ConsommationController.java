@@ -24,7 +24,7 @@ public class ConsommationController {
     }
     @GetMapping("/consommation/new")
     public String showConsommationForm(Model model){
-        model.addAttribute("Consommation", new Consommation());
+        model.addAttribute("consommation", new Consommation());
         model.addAttribute("pageTitle", "Add new Consommation");
 
         return"consommation_form";
