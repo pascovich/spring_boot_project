@@ -23,14 +23,14 @@ public class ConsommationController {
         return "consommations";
     }
     @GetMapping("/consommation/new")
-    public String showClientForm(Model model){
+    public String showConsommationForm(Model model){
         model.addAttribute("Consommation", new Consommation());
         model.addAttribute("pageTitle", "Add new Consommation");
 
         return"consommation_form";
     }
     @PostMapping("/consommation/save")
-    public String saveClient(Consommation consommation, RedirectAttributes ra){
+    public String saveConsommation(Consommation consommation, RedirectAttributes ra){
         cnsmmeService.save(consommation);
         ra.addFlashAttribute("message","client add successfuly");
         return "redirect:/consommation";

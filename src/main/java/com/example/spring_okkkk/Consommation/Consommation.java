@@ -25,6 +25,6 @@ public class Consommation {
     private Integer ref_abonner;
 
     @Column(nullable = false)
-    private Boolean chek_cons_paie;
+    private Boolean chek_cons_fac;
 
 }

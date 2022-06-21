@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link type="text/css" href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+    <form th:action="@{/consommation/save}" method="post" th:object="${consommation}"
+          style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}">
+        <div class="border border-secondary rounded p-3" >
+            <div class="form-group row">
+                <label class=" col-sm-4 col-form-label">Abonner : </label>
+                <div class="col-sm-8">
+                    <select class="multisteps-form__select form-control" name="abonner">
+                        <option value="">----select--abonner---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class=" col-sm-4 col-form-label">Annee : </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{annee}" class="form-control" min="0" max="2022">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class=" col-sm-4 col-form-label">Mois : </label>
+                <div class="col-sm-8">
+                    <select class="multisteps-form__select form-control" name="mois">
+                        <option value="Janvier">----Janvier--</option>
+                        <option value="Fevrier">----Fevrier--</option>
+                        <option value="Mars">----Mars--</option>
+                        <option value="Avril">----Avril--</option>
+                        <option value="Mai">----Mai--</option>
+                        <option value="Juin">----Juin--</option>
+                        <option value="Juillet">----Juillet--</option>
+                        <option value="Aout">----Aout--</option>
+                        <option value="Septembre">----Septembre--</option>
+                        <option value="Octobre">----Octobre--</option>
+                        <option value="Novembre">----Novembre--</option>
+                        <option value="Decembre">----Decembre--</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class=" col-sm-4 col-form-label">Puissance : </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{puissance}" class="form-control" min="0">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class=" col-sm-4 col-form-label">Prix Unitaire : </label>
+                <div class="col-sm-8">
+                    <input type="number" th:field="*{pu}" class="form-control" min="0">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-outline-primary" type="submit">Save</button>
+                <button class="btn btn-outline-primary" type="reset" onclick="cancelb()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function cancelb(){
+        window.location = "[[@{/consommation}]]"
+    }
+</script>
+</body>
+</html>
