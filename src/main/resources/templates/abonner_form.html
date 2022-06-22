@@ -34,7 +34,7 @@
                 <label class=" col-sm-4 col-form-label">Abonnement : </label>
                 <div class="col-sm-8">
                     <select class="multisteps-form__select form-control" name="abonnement">
-                        <option value="">----select--abonnement---</option>
+                        <option th:value="${ab.id}" th:each="ab:${listabonnements}">[[${ab.type_abonnement}]]</option>
                     </select>
                 </div>
             </div>

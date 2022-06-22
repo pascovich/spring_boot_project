@@ -15,6 +15,7 @@ import java.util.List;
 public class AbonnementController {
     @Autowired
     private AbonnementService abnmentService;
+    @Autowired private ClientService cltService;
     @GetMapping("/abonnement")
     public String showallabonnement(Model model){
         List<Abonnement> listabonnements = abnmentService.abnnementAll();
@@ -22,12 +23,16 @@ public class AbonnementController {
 
         return "abonnements";
     }
+
     @GetMapping("/abonnement/new")
     public String showAbonnementForm(Model model){
+        List<Client> cli = cltService.clientsAll();
         model.addAttribute("abonnement", new Abonnement());
         model.addAttribute("pageTitle", "Add new Abonnement");
 
-        return"abonnement_form";
+        model.addAttribute("cli",cli);
+
+        return "abonnement_form";
     }
     @PostMapping("/abonnement/save")
     public String saveAbonnement(Abonnement abonnement, RedirectAttributes ra){

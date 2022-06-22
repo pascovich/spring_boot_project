@@ -25,10 +25,9 @@ public class AbonnerController {
     @GetMapping("/abonner/new")
     public String showAbonnerForm(Model model){
         model.addAttribute("abonner", new Abonner());
-        //model.addAttribute("abonnement", new Abonnement());
         model.addAttribute("pageTitle", "Add new abonner");
 
-        return"abonner_form";
+        return"abonner_html";
     }
     @PostMapping("/abonner/save")
     public String saveClient(Abonner abonner, RedirectAttributes ra){

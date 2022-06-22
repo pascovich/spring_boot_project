@@ -27,7 +27,8 @@ public class ConsommationController {
         model.addAttribute("consommation", new Consommation());
         model.addAttribute("pageTitle", "Add new Consommation");
 
-        return"consommation_form";
+        return"ex";
+       //return"consommation_form";
     }
     @PostMapping("/consommation/save")
     public String saveConsommation(Consommation consommation, RedirectAttributes ra){
