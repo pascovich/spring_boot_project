@@ -12,35 +12,33 @@
 <body>
 <div>
   <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
-  <form th:action="@{/facturation/save}" method="post" th:object="${facturation}"
+  <form action="/facturation/save" method="post"
         style="max-width: 500px; margin: 0 auto;">
-    <input type="hidden" th:field="*{id}">
+    <input type="hidden" name="id">
+    <div th:if="${error}" class="alert alert-danger text-center">
+      [[${error}]]
+    </div>
     <div class="border border-secondary rounded p-3" >
       <div class="form-group row">
         <label class=" col-sm-4 col-form-label">Numero Facture : </label>
         <div class="col-sm-8">
-          <input type="text" th:field="*{num_facture}" class="form-control" >
+          <input type="text" name="numero_facture" class="form-control" >
         </div>
       </div>
       <div class="form-group row">
         <label class=" col-sm-4 col-form-label">Consommation : </label>
         <div class="col-sm-8">
-          <select class="multisteps-form__select form-control" name="consommation">
-            <option value="">----select--abonner---</option>
+          <select class="multisteps-form__select form-control" name="ref_consommation">
+            <option th:value="${ab.id}" th:each="ab:${fc}">N°[[${ab.id}]]---et Montant:[[${ab.montant_tot}]]</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
-        <label class=" col-sm-4 col-form-label">Date facture : </label>
-        <div class="col-sm-8">
-          <input type="date" th:field="*{date_facture}" class="form-control" >
-        </div>
-      </div>
+
 
       <div class="form-group row">
         <label class=" col-sm-4 col-form-label">Montant : </label>
         <div class="col-sm-8">
-          <input type="text" th:field="*{montant}" class="form-control" min="0">
+          <input type="number" name="montant_facture" class="form-control" min="0">
         </div>
       </div>
 

@@ -101,9 +101,10 @@
                         <th:block th:each="facturation : ${listfacturations}">
                             <tr>
                                 <td>[[${facturation.id}]]</td>
+                                <td>[[${facturation.numero_facture}]]</td>
                                 <td>[[${facturation.date_facture}]]</td>
                                 <td>[[${facturation.ref_consommation}]]</td>
-                                <td>[[${facturation.montant}]]</td>
+                                <td>[[${facturation.montant_facture}]]</td>
                                 <td>[[${facturation.chek_fac_paie}]]</td>
                                 <td>
                                     <a th:href="@{'/client/edit/' + ${facturation.id}}">edit</a>|

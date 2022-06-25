@@ -93,6 +93,7 @@
               <th>Mois</th>
               <th>Puissance</th>
               <th>Prix unitaire</th>
+              <th>Prix Totale</th>
               <th>Chek Facture</th>
               <th>DB</th>
             </tr>
@@ -107,6 +108,7 @@
                 <td>[[${consommation.mois}]]</td>
                 <td>[[${consommation.puissance}]]</td>
                 <td>[[${consommation.pu}]]</td>
+                <td>[[${consommation.montant_tot}]]</td>
                 <td>[[${consommation.chek_cons_fac}]]</td>
                 <td>
                   <a th:href="@{'/client/edit/' + ${consommation.id}}">edit</a>|

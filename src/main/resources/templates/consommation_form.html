@@ -12,22 +12,23 @@
 <body>
 <div>
     <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
-    <form th:action="@{/consommation/save}" method="post" th:object="${consommation}"
+    <form action="/consommation/save" method="post"
           style="max-width: 500px; margin: 0 auto;">
-        <input type="hidden" th:field="*{id}">
+<!--        <input type="hidden" th:field="*{id}">-->
         <div class="border border-secondary rounded p-3" >
             <div class="form-group row">
                 <label class=" col-sm-4 col-form-label">Abonner : </label>
                 <div class="col-sm-8">
-                    <select class="multisteps-form__select form-control" name="abonner">
-                        <option value="">----select--abonner---</option>
+                    <select class="multisteps-form__select form-control" name="ref_abonner">
+                        <option th:value="${ab.id}" th:each="ab:${abb}">[[${ab.id}]]</option>
                     </select>
                 </div>
             </div>
+
             <div class="form-group row">
                 <label class=" col-sm-4 col-form-label">Annee : </label>
                 <div class="col-sm-8">
-                    <input type="text" th:field="*{annee}" class="form-control" min="0" max="2022">
+                    <input type="text" name="annee" class="form-control" min="0" max="2022">
                 </div>
             </div>
 
@@ -54,13 +55,13 @@
             <div class="form-group row">
                 <label class=" col-sm-4 col-form-label">Puissance : </label>
                 <div class="col-sm-8">
-                    <input type="text" th:field="*{puissance}" class="form-control" min="0">
+                    <input type="number" name="puissance" class="form-control" min="0">
                 </div>
             </div>
             <div class="form-group row">
                 <label class=" col-sm-4 col-form-label">Prix Unitaire : </label>
                 <div class="col-sm-8">
-                    <input type="number" th:field="*{pu}" class="form-control" min="0">
+                    <input type="number" name="pu" class="form-control" min="0">
                 </div>
             </div>
             <div class="text-center">

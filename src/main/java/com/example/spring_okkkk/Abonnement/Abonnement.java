@@ -16,6 +16,16 @@ public class Abonnement {
     @Column(nullable = false, length = 300)
     private String description;
 
+    private Float montant;
+
+    public Float getMontant() {
+        return montant;
+    }
+
+    public void setMontant(Float montant) {
+        this.montant = montant;
+    }
+
     public Integer getId() {
         return id;
     }

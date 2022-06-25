@@ -90,6 +90,7 @@
                             <th>#</th>
                             <th>Type Abonnement</th>
                             <th>Description</th>
+                            <th>Montant</th>
                             <th>DB</th>
                         </tr>
                         </thead>
@@ -100,6 +101,7 @@
                                 <td>[[${abonnement.id}]]</td>
                                 <td>[[${abonnement.type_abonnement}]]</td>
                                 <td>[[${abonnement.description}]]</td>
+                                <td>[[${abonnement.montant}]]</td>
                                 <td>
                                     <a th:href="@{'/abonnement/edit/' + ${abonnement.id}}">edit</a>|
                                     <a th:href="@{'/abonnement/delete/' +${abonnement.id}}">del</a>
