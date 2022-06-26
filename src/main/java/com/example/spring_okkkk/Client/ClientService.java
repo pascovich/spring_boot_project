@@ -2,10 +2,13 @@ package com.example.spring_okkkk.Client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.util.StringUtils;
 @Service
 public class ClientService {
     @Autowired private ClientRepository repo;
@@ -30,6 +33,24 @@ public class ClientService {
             throw new ClientNotFoundException("on ne peut pas trouver le client ID="+id);
         }
         repo.deleteById(id);
+    }
+    public void insert(String nom,String postnom,String prenom,String sexe,String telephone,String adresse,String describe_menage, MultipartFile filep){
+        Client e =new Client();
+        String photo= StringUtils.cleanPath(filep.getOriginalFilename());
+        try{
+            e.setPhoto(Base64.getEncoder().encodeToString(filep.getBytes()));
+        }
+        catch (IOException s){
+            throw new RuntimeException(s);
+        }
+        e.setNom(nom);
+        e.setPostnom(postnom);
+        e.setPrenom(prenom);
+        e.setSexe(sexe);
+        e.setTelephone(telephone);
+        e.setAdresse(adresse);
+        e.setDescribe_menage(describe_menage);
+        repo.save(e);
     }
 
 }

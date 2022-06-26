@@ -27,7 +27,7 @@ public class Client {
     @Column(nullable = true, length = 300)
     private String adresse;
 
-    @Column(nullable = true, length = 300)
+    @Column(columnDefinition ="MEDIUMBLOB")
     private String photo;
 
     @Column(nullable = true, length = 300)

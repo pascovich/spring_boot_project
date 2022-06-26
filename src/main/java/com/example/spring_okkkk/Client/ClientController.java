@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -30,9 +32,12 @@ public class ClientController {
         return"client_form";
     }
     @PostMapping("/client/save")
-    public String saveClient(Client client, RedirectAttributes ra){
-        cltService.save(client);
-        ra.addFlashAttribute("message","client add successfuly");
+//    public String saveClient(Client client, RedirectAttributes ra){
+//        cltService.save(client);
+//        ra.addFlashAttribute("message","client add successfuly");
+//        return "redirect:/client";
+    public String insertClient(@RequestParam("nom") String nom,@RequestParam("postnom") String postnom,@RequestParam("prenom") String prenom,@RequestParam("sexe") String sexe,@RequestParam("telephone") String telephone,@RequestParam("adresse") String adresse,@RequestParam("describe") String describe,@RequestParam("photo") MultipartFile photo){
+        cltService.insert(nom,postnom,prenom,sexe,telephone,adresse,describe,photo);
         return "redirect:/client";
     }
     @GetMapping("/client/edit/{id}")
