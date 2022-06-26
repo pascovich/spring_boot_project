@@ -30,6 +30,7 @@ public class FacturationService {
         e.setRef_consommation(ref_consommation);
         e.setMontant_facture(montant);
         e.setChek_fac_paie(false);
+        e.setReste_fac(montant);
         repo_fac.save(e);
     }
 }

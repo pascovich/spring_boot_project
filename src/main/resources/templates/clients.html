@@ -114,7 +114,8 @@
                                 <td>[[${client.describe_menage}]]</td>
                                 <td>
                                     <a th:href="@{'/client/edit/' + ${client.id}}">edit</a>|
-                                    <a th:href="@{'/client/delete/' +${client.id}}">del</a>
+                                    <a th:href="@{'/client/delete/' +${client.id}}">del</a>|
+                                    <a th:href="@{'/client_facture_paie/' +${client.id}}">see</a>
                                 </td>
                             </tr>
                         </th:block>

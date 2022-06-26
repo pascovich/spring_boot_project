@@ -23,6 +23,9 @@ public class PaiementController {
     private PaiementRepository repo_paie;
 
     @Autowired
+    private Facturationrepository repo_fac;
+
+    @Autowired
     private FacturationService facService;
     @GetMapping("/paiement")
     public String showallpaiement(Model model){
@@ -49,11 +52,17 @@ public class PaiementController {
     @PostMapping("/paiement/save")
     public String save(@RequestParam("ref_facture") Integer ref_facture, @RequestParam("date_paie") String date_paie , @RequestParam("motif") String motif,@RequestParam("montant_a_payer") Float montant_a_payer,@RequestParam("montant_payer") Float montant_payer, RedirectAttributes ra){
         float montantAPayer= repo_paie.montantApayer(ref_facture);
-        if(montantAPayer>montant_a_payer){
+        float resteFac = repo_paie.reste_fac(ref_facture);
+        if(resteFac<montant_payer){
             ra.addFlashAttribute("error","le montant a payer pour cette facture est de "+montant_a_payer+" veillez donc entrer un montant inferieur ou egal a "+(montant_a_payer));
             return "redirect:/paiement/new";
         }else{
-            paieService.insererPaiement(date_paie,ref_facture,motif,montant_a_payer,montant_payer);
+           // paieService.upfacreste(resteFac,montant_payer);
+            Float px = montant_payer;
+            Float new_r = resteFac-px;
+            repo_paie.upreste(new_r,ref_facture);
+            paieService.insererPaiement(date_paie,ref_facture,motif,montant_a_payer,montant_payer,resteFac);
+
             ra.addFlashAttribute("message","successfull order");
             return "redirect:/paiement";
         }

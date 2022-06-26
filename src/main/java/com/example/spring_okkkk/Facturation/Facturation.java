@@ -72,6 +72,17 @@ public class Facturation {
     private Float montant_facture;
 
     @Column(nullable = false)
+    private Float reste_fac;
+
+    public Float getReste_fac() {
+        return reste_fac;
+    }
+
+    public void setReste_fac(Float reste_fac) {
+        this.reste_fac = reste_fac;
+    }
+
+    @Column(nullable = false)
     private boolean chek_fac_paie;
 
 }

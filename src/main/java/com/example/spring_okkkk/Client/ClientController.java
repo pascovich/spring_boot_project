@@ -13,6 +13,8 @@ import java.util.List;
 @Controller
 public class ClientController {
     @Autowired private ClientService cltService;
+    @Autowired private ClientRepository repo;
+    @Autowired private ShowRepository repo_vue;
     @GetMapping("/client")
     public String showallclient(Model model){
         List<Client> listclients = cltService.clientsAll();
@@ -56,5 +58,14 @@ public class ClientController {
 
         }
         return "redirect:/client";
+    }
+    @GetMapping("/client_facture_paie/{id}")
+    public String details_client_fac_paie(@PathVariable("id") Integer id,Model model, RedirectAttributes ra){
+
+            List<Show_vue> ggg=repo_vue.liste(id);
+            model.addAttribute("ggg",ggg);
+            //model.addAttribute("ggg",new Show_vue());
+            return "client_details";
+
     }
 }

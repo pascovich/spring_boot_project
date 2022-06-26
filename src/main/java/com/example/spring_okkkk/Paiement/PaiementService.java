@@ -11,19 +11,21 @@ import java.util.List;
 public class PaiementService {
     @Autowired
     private PaiementRepository repo;
+    @Autowired
+    private Facturationrepository repo_fac;
 
     public List<Paiement> paiementsAll(){
         return (List<Paiement>) repo.findAll();
     }
 
-    public void save(Paiement paiement) {
-        repo.save(paiement);
-    }
+//    public void save(Paiement paiement) {
+//        repo.save(paiement);
+//    }
 
 
     @Autowired
     PaiementRepository repo_paie;
-    public void insererPaiement(String date_paie,Integer ref_facture,String motif,Float prix_a_payer,Float prix_payer){
+    public void insererPaiement(String date_paie,Integer ref_facture,String motif,Float prix_a_payer,Float prix_payer,Float prixpayer){
         Paiement e = new Paiement();
         e.setDate_paie(date_paie);
         e.setRef_facture(ref_facture);
@@ -39,5 +41,25 @@ public class PaiementService {
 
         e.setReste(reste);
         repo_paie.save(e);
+//update reste a payer
+//        Facturation ex = new Facturation();
+//        Float prix = prixpayer;
+//        Float re = reste;
+//        Float r = reste - prix;
+//        ex.setReste_fac(r);
+//        repo_fac.save(ex);
     }
+    public void updateFac(Integer ref_fac){
+        Facturation e = new Facturation();
+        e.setChek_fac_paie(true);
+        repo_fac.save(e);
+    }
+//    public void upfacreste(Float reste,Float prixpayer){
+//        Facturation e = new Facturation();
+//        Float prix = prixpayer;
+//        Float re = reste;
+//        Float r = reste - prix;
+//        e.setReste_fac(r);
+//        repo_fac.save(e);
+//    }
 }

@@ -93,6 +93,7 @@
                             <th>Motif</th>
                             <th>Montant A payer</th>
                             <th>Montant payer</th>
+                            <th>Reste</th>
                             <th>DB</th>
                         </tr>
                         </thead>
@@ -103,9 +104,10 @@
                                 <td>[[${paiement.id}]]</td>
                                 <td>[[${paiement.ref_facture}]]</td>
                                 <td>[[${paiement.date_paie}]]</td>
-                                <td>[[${paiement.motiff}]]</td>
+                                <td>[[${paiement.motif}]]</td>
                                 <td>[[${paiement.montant_a_payer}]]</td>
                                 <td>[[${paiement.montant_payer}]]</td>
+                                <td>[[${paiement.reste}]]</td>
                                 <td>
                                     <a th:href="@{'/client/edit/' + ${paiement.id}}">edit</a>|
                                     <a th:href="@{'/client/delete/' +${paiement.id}}">del</a>
