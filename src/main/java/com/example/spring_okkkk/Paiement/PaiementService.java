@@ -49,11 +49,11 @@ public class PaiementService {
 //        ex.setReste_fac(r);
 //        repo_fac.save(ex);
     }
-    public void updateFac(Integer ref_fac){
-        Facturation e = new Facturation();
-        e.setChek_fac_paie(true);
-        repo_fac.save(e);
-    }
+//    public void updateFac(Integer ref_fac){
+//        Facturation e = new Facturation();
+//        e.setChek_fac_paie(true);
+//        repo_fac.save(e);
+//    }
 //    public void upfacreste(Float reste,Float prixpayer){
 //        Facturation e = new Facturation();
 //        Float prix = prixpayer;

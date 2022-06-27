@@ -36,10 +36,13 @@ public class PaiementController {
     }
     @GetMapping("/paiement/new")
     public String showPaiementForm(Model model){
-        List<Facturation> cs = facService.facturationsAll();
+        //List<Facturation> cs = facService.facturationsAll();
+        List<Facturation> cs=repo_fac.listeFacNonfayer();
+
         model.addAttribute("paiement", new Paiement());
         model.addAttribute("pageTitle", "Add new Paiement");
         model.addAttribute("cs",cs);
+       // model.addAttribute("cs",cs);
 
         return"paiement_form";
     }
@@ -60,8 +63,15 @@ public class PaiementController {
            // paieService.upfacreste(resteFac,montant_payer);
             Float px = montant_payer;
             Float new_r = resteFac-px;
-            repo_paie.upreste(new_r,ref_facture);
-            paieService.insererPaiement(date_paie,ref_facture,motif,montant_a_payer,montant_payer,resteFac);
+
+            if(new_r==0){
+                repo_paie.upreste(new_r,ref_facture);
+                paieService.insererPaiement(date_paie,ref_facture,motif,montant_a_payer,montant_payer,resteFac);
+                repo_paie.upfacetat(ref_facture);
+            }else{
+                repo_paie.upreste(new_r,ref_facture);
+                paieService.insererPaiement(date_paie,ref_facture,motif,montant_a_payer,montant_payer,resteFac);
+            }
 
             ra.addFlashAttribute("message","successfull order");
             return "redirect:/paiement";

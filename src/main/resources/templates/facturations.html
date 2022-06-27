@@ -107,7 +107,9 @@
                                 <td>[[${facturation.ref_consommation}]]</td>
                                 <td>[[${facturation.montant_facture}]]</td>
                                 <td>[[${facturation.reste_fac}]]</td>
-                                <td>[[${facturation.chek_fac_paie}]]</td>
+                                <td>
+
+                                    [[${facturation.chek_fac_paie}]]</td>
                                 <td>
                                     <a th:href="@{'/client/edit/' + ${facturation.id}}">edit</a>|
                                     <a th:href="@{'/client/delete/' +${facturation.id}}">del</a>
