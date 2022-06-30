@@ -48,8 +48,6 @@ public class AbPdf {
 
         }
 
-
-
     }
     public void export(HttpServletResponse response,int id) throws DocumentException, IOException {
        // public void export(HttpServletResponse response)d throws DocumentException, IOException {
@@ -59,7 +57,7 @@ public class AbPdf {
         Font font=FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
         font.setColor(Color.BLACK);
-        Paragraph p=new Paragraph("LISTE DES ABONNEMENT",font);
+        Paragraph p=new Paragraph("LISTE DES ABONNEMENTS",font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
         PdfPTable table=new PdfPTable(4);

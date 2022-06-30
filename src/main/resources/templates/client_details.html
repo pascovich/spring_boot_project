@@ -62,11 +62,9 @@
 <div class="row page-header">
     <div class="col-lg-6 align-self-center ">
         <h2>Data Tables</h2>
-        <ol class="breadcrumb">
+        <ol class="breadcrumb" >
             <li class="breadcrumb-item"><a th:href="@{index}">Home</a></li>
             <li class="breadcrumb-item"><a th:href="@{clients}">Data</a></li>
-            <li class="breadcrumb-item active">Data Clients=</li>
-            <li class="breadcrumb-item active">Data Clients</li>
             <li class="breadcrumb-item active">Data Clients</li>
 
         </ol>
@@ -91,17 +89,18 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>date paiement</th>
+                            <th>Nom</th>
+                            <th>PostNom</th>
+                            <th>PreNom</th>
                             <th>Num facture</th>
-
                             <th>Annee</th>
                             <th>Mois</th>
-                            <th>Prix A payer</th>
-                            <th>Prix Payer</th>
-                            <th>Reste</th>
+                            <th>Date Facture</th>
+                            <th>PU</th>
                             <th>Puissance</th>
-                            <th>Pu</th>
-                            <th>Tot</th>
+                            <th>Montant</th>
+                            <th>Reste</th>
+                            <th>Status</th>
 
                         </tr>
                         </thead>
@@ -109,20 +108,19 @@
                         <tbody>
                         <th:block th:each="gg : ${ggg}">
                             <tr>
-                                <td>[[${gg.id_paie}]]</td>
-                                <td>[[${gg.date_paie}]]</td>
-                                <td>[[${gg.numero_facture}]]</td>
+                                <td>[[${gg.id_client}]]</td>
                                 <td>[[${gg.nom}]]</td>
                                 <td>[[${gg.postnom}]]</td>
+                                <td>[[${gg.prenom}]]</td>
+                                <td>[[${gg.numero_facture}]]</td>
                                 <td>[[${gg.annee}]]</td>
                                 <td>[[${gg.mois}]]</td>
-                                <td>[[${gg.montant_a_payer}]]</td>
-                                <td>[[${gg.montant_payer}]]</td>
-                                <td>[[${gg.reste}]]</td>
-                                <td>[[${gg.puissance}]]</td>
+                                <td>[[${gg.date_facturation}]]</td>
                                 <td>[[${gg.pu}]]</td>
+                                <td>[[${gg.puissance}]]</td>
                                 <td>[[${gg.montant_tot}]]</td>
-
+                                <td>[[${gg.reste_a_payer}]]</td>
+                                <td>[[${gg.chek_fac_paie}]]</td>
                             </tr>
                         </th:block>
                         </tbody>

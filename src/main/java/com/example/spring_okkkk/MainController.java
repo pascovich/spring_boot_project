@@ -8,6 +8,7 @@ import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +19,11 @@ import java.util.Date;
 
 @Controller
 public class MainController {
+    IndexRepository ir;
     @GetMapping("")
-    public String homepage(){
+    public String homepage(Model model){
+        //int nombreClient = ir.DashClients();
+        //model.addAttribute("nombreClient",nombreClient);
         return "index";
     }
 
