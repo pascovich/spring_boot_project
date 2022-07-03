@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,12 +20,19 @@ import java.util.Date;
 
 @Controller
 public class MainController {
+    @Autowired PdfFacture pdfFacture;
     IndexRepository ir;
     @GetMapping("")
     public String homepage(Model model){
         //int nombreClient = ir.DashClients();
         //model.addAttribute("nombreClient",nombreClient);
         return "index";
+    }
+    @GetMapping("/eleve")
+    public String hometest(Model model){
+        //int nombreClient = ir.DashClients();
+        //model.addAttribute("nombreClient",nombreClient);
+        return "eleve";
     }
 
     @Autowired
@@ -56,5 +64,16 @@ public class MainController {
         response.setHeader(headerkey,headerValue);
         //abpdf.export(response);
         abpdf.export(response,1);
+    }
+    @GetMapping("/facturationetat/{id}")
+    public void exporttoPDFFacture(@PathVariable("id") int id,HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter=new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentateTime=dateFormatter.format(new Date(0));
+        String headerkey="Content-Disposition";
+        String headerValue="attachment;filename=FACTURE"+currentateTime+".pdf";
+        response.setHeader(headerkey,headerValue);
+        pdfFacture.export(response,id);
+
     }
 }

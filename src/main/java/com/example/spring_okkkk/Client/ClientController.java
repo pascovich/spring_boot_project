@@ -65,9 +65,9 @@ public class ClientController {
         return "redirect:/client";
     }
     @GetMapping("/client_facture_paie/{id}")
-    public String details_client_fac_paie(@PathVariable("id") Integer id,Model model, RedirectAttributes ra){
+    public String details_client_fac_paie(@PathVariable("id") int id,Model model, RedirectAttributes ra){
 
-            List<Show_vue> ggg=repo_vue.liste(id);
+            Iterable<Show_vue> ggg=repo_vue.liste(id);
             model.addAttribute("ggg",ggg);
             //model.addAttribute("ggg",new Show_vue());
             return "client_details";

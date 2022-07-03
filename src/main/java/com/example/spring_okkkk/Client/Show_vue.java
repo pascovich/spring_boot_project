@@ -19,7 +19,7 @@ public class Show_vue {
     private String prenom;
 
     @Column(nullable = false)
-    private String numero_facture;
+    private String numerofacture;
 
     public Integer getId_client() {
         return id_client;
@@ -53,12 +53,12 @@ public class Show_vue {
         this.prenom = prenom;
     }
 
-    public String getNumero_facture() {
-        return numero_facture;
+    public String getNumerofacture() {
+        return numerofacture;
     }
 
-    public void setNumero_facture(String numero_facture) {
-        this.numero_facture = numero_facture;
+    public void setNumerofacture(String numerofacture) {
+        this.numerofacture = numerofacture;
     }
 
     public String getAnnee() {

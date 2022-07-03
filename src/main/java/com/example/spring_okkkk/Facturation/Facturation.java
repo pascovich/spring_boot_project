@@ -11,7 +11,7 @@ public class Facturation {
     private Integer id;
 
     @Column(nullable = false)
-    private String numero_facture;
+    private String numerofacture;
 
 
     @Column(name="date",columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -25,12 +25,12 @@ public class Facturation {
         this.id = id;
     }
 
-    public String getNumero_facture() {
-        return numero_facture;
+    public String getNumerofacture() {
+        return numerofacture;
     }
 
-    public void setNumero_facture(String numero_facture) {
-        this.numero_facture = numero_facture;
+    public void setNumerofacture(String numerofacture) {
+        this.numerofacture = numerofacture;
     }
 
     public Timestamp getDate_facture() {

@@ -94,7 +94,7 @@
                             <th>Montant</th>
                             <th>Reste</th>
                             <th>Check Facture Paie</th>
-                            <th>DB</th>
+                            <th>Facturer</th>
                         </tr>
                         </thead>
 
@@ -102,17 +102,16 @@
                         <th:block th:each="facturation : ${listfacturations}">
                             <tr>
                                 <td>[[${facturation.id}]]</td>
-                                <td>[[${facturation.numero_facture}]]</td>
+                                <td>[[${facturation.numerofacture}]]</td>
                                 <td>[[${facturation.date_facture}]]</td>
                                 <td>[[${facturation.ref_consommation}]]</td>
                                 <td>[[${facturation.montant_facture}]]</td>
                                 <td>[[${facturation.reste_fac}]]</td>
                                 <td>
-
-                                    [[${facturation.chek_fac_paie}]]</td>
+                                    [[${facturation.chek_fac_paie}]]
+                                </td>
                                 <td>
-                                    <a th:href="@{'/client/edit/' + ${facturation.id}}">edit</a>|
-                                    <a th:href="@{'/client/delete/' +${facturation.id}}">del</a>
+                                    |<a th:href="@{'/facturationetat/' + ${facturation.id}}">fact</a>|
                                 </td>
                             </tr>
                         </th:block>

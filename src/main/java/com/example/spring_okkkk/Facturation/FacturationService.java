@@ -26,7 +26,7 @@ public class FacturationService {
     Facturationrepository repo_fac;
     public void insererfacuration(String num_fac,Integer ref_consommation,Float montant){
         Facturation e = new Facturation();
-        e.setNumero_facture(num_fac);
+        e.setNumerofacture(num_fac);
         e.setRef_consommation(ref_consommation);
         e.setMontant_facture(montant);
         e.setChek_fac_paie(false);

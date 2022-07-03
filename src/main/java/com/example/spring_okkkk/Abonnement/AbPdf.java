@@ -36,6 +36,25 @@ public class AbPdf {
 
 
     }
+    private  void writeTableHeaderFACTURE(PdfPTable table) {
+        PdfPCell cell = new PdfPCell();
+        cell.setBackgroundColor(Color.WHITE);
+        cell.setPadding(5);
+
+        com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA);
+        font.setColor(Color.BLACK);
+
+        cell.setPhrase(new Phrase("ID", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Type", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Description", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("Montant", font));
+        table.addCell(cell);
+
+
+    }
     private void writeTableData(PdfPTable table,int id){
         //Iterable<Abonnement> listeab= repo_ab.findAll();
         List<Abonnement> listeab= repo_ab.listeAb(id);
@@ -57,14 +76,14 @@ public class AbPdf {
         Font font=FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         font.setSize(18);
         font.setColor(Color.BLACK);
-        Paragraph p=new Paragraph("LISTE DES ABONNEMENTS",font);
+        Paragraph p=new Paragraph("FACTURE DES CLIENTS",font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
         PdfPTable table=new PdfPTable(4);
         table.setWidthPercentage(100f);
         table.setWidths(new float[]{1.0f,1.7f,6.0f,2.0f});
         table.setSpacingBefore(10);
-        writeTableHeader(table);
+        writeTableHeaderFACTURE(table);
         //writeTableData(table);
         writeTableData(table,id);
         document.add(table);

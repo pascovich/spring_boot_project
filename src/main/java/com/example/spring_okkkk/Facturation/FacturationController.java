@@ -58,7 +58,8 @@ public class FacturationController {
         if(montant_facture!=total){
             ra.addFlashAttribute("error","le montant a facturer pour cette conxommation est de "+total+" veillez donc entrer un montant ou egal a "+(total));
             return "redirect:/facturation/new";
-        }else{
+        }else
+        {
             factService.insererfacuration(numero_facture,ref_consommation,montant_facture);
             repo_fac.upConsetat(ref_consommation);
             ra.addFlashAttribute("message","successfull");

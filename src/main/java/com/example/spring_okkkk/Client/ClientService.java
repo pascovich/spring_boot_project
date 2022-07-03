@@ -36,11 +36,16 @@ public class ClientService {
     }
     public void insert(String nom,String postnom,String prenom,String sexe,String telephone,String adresse,String describe_menage, MultipartFile filep){
         Client e =new Client();
-        String photo= StringUtils.cleanPath(filep.getOriginalFilename());
+
+        String filename= StringUtils.cleanPath(filep.getOriginalFilename());
+        if(filename.contains("..")){
+            System.err.println("not a valid");
+        }
         try{
             e.setPhoto(Base64.getEncoder().encodeToString(filep.getBytes()));
         }
-        catch (IOException s){
+        catch (IOException s)
+        {
             throw new RuntimeException(s);
         }
         e.setNom(nom);

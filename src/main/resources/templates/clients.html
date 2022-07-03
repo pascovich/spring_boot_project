@@ -110,7 +110,10 @@
                                 <td>[[${client.sexe}]]</td>
                                 <td>[[${client.telephone}]]</td>
                                 <td>[[${client.adresse}]]</td>
-                                <td>[[${client.photo}]]</td>
+
+                                <td>
+                                    <img width="20px" height="20px" th:src="@{'data:image/jpeg;base64,'+${client.photo}}">
+                                </td>
                                 <td>[[${client.describe_menage}]]</td>
                                 <td>
                                     <a th:href="@{'/client/edit/' + ${client.id}}">edit</a>|
