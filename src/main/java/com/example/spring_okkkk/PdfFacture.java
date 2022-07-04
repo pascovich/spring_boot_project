@@ -31,27 +31,38 @@ public class PdfFacture {
 
         com.lowagie.text.Font font = FontFactory.getFont(FontFactory.HELVETICA);
         font.setColor(Color.black);
-
+        cell.setPhrase(new Phrase("ANNEE", font));
+        table.addCell(cell);
         cell.setPhrase(new Phrase("MOIS", font));
         table.addCell(cell);
         cell.setPhrase(new Phrase("DATE ET HEURE", font));
         table.addCell(cell);
+        cell.setPhrase(new Phrase("PUISSANCE", font));
+        table.addCell(cell);
+        cell.setPhrase(new Phrase("PRIX/UNITE", font));
+        table.addCell(cell);
         cell.setPhrase(new Phrase("MONTANT", font));
         table.addCell(cell);
-
+        cell.setPhrase(new Phrase("ETAT FACTURE", font));
+        table.addCell(cell);
 
     }
     private void writeTableData(PdfPTable table,int id){
-        Iterable<Facturation> liste=fac_repo.facturer(id);
+        //Iterable<Facturation> liste=fac_repo.facturer(id);
+        Iterable<VueFactute> liste=fac_repo.facturer(id);
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.WHITE);
 
 
-        for(Facturation salle : liste){
-            table.addCell(""+salle.getDate_facture());
-            table.addCell(""+salle.getDate_facture());
+        for(VueFactute salle : liste){
+            //for(Facturation salle : liste){
+            table.addCell(""+salle.getAnnee());
+            table.addCell(""+salle.getMois());
+            table.addCell(""+salle.getDate());
+            table.addCell(""+salle.getPuissance());
+            table.addCell(""+salle.getPu());
             table.addCell(""+salle.getMontant_facture()+"$");
-
+            table.addCell(""+salle.getChek_fac_paie());
 
         }
 
@@ -70,7 +81,7 @@ public class PdfFacture {
         Font titre=FontFactory.getFont(FontFactory.TIMES_ROMAN);
         titre.setSize(12);
         titre.setColor(Color.black);
-        Paragraph p=new Paragraph("RELEVER DE PAIEMENT",font);
+        Paragraph p=new Paragraph("FACTURE DE PAIEMENT",font);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
         for(Client client : nom) {
@@ -86,13 +97,10 @@ public class PdfFacture {
             Paragraph p4 = new Paragraph("SEXE    : "+client.getSexe(), titre);
             p4.setAlignment(Paragraph.ALIGN_LEFT);
             document.add(p4);
-            Paragraph p5 = new Paragraph("SALLE   : ", titre);
-            p5.setAlignment(Paragraph.ALIGN_LEFT);
-            document.add(p5);
         }
-        PdfPTable table=new PdfPTable(3);
+        PdfPTable table=new PdfPTable(7);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[]{2.3f,2.3f,2.3f});
+        table.setWidths(new float[]{2.3f,2.3f,2.3f,2.3f,2.3f,2.3f,2.3f});
         table.setSpacingBefore(10);
         writeTableHeader(table);
         writeTableData(table,id);

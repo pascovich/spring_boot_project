@@ -37,11 +37,11 @@ public class PaiementController {
     @GetMapping("/paiement/new")
     public String showPaiementForm(Model model){
         //List<Facturation> cs = facService.facturationsAll();
-        List<Facturation> cs=repo_fac.listeFacNonfayer();
+        List<Facturation> css=repo_fac.listeFacNonfayer();
 
         model.addAttribute("paiement", new Paiement());
         model.addAttribute("pageTitle", "Add new Paiement");
-        model.addAttribute("cs",cs);
+        model.addAttribute("css",css);
        // model.addAttribute("cs",cs);
 
         return"paiement_form";
