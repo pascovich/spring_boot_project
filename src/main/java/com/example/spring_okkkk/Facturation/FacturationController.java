@@ -5,6 +5,9 @@ import com.example.spring_okkkk.Client.Show_vue;
 import com.example.spring_okkkk.Consommation.Consommation;
 import com.example.spring_okkkk.Consommation.ConsommationRepository;
 import com.example.spring_okkkk.Consommation.ConsommationService;
+import com.example.spring_okkkk.PdfFacture;
+import com.example.spring_okkkk.PdfFactureNotPayed;
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -22,7 +30,8 @@ public class FacturationController {
     private FacturationService factService;
     @Autowired
     private ConsommationService conService;
-
+    @Autowired
+    PdfFactureNotPayed pdfFactureNotPayed;
     @Autowired
     private Facturationrepository repo_fac;
 
@@ -65,6 +74,17 @@ public class FacturationController {
             ra.addFlashAttribute("message","successfull");
             return "redirect:/facturation";
         }
+
+    }
+    @GetMapping("/facturation/NoPayed/{annee}")
+    public void exporttoPDFFactureNoPayed(@PathVariable("annee") int annee, HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter=new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentateTime=dateFormatter.format(new Date(0));
+        String headerkey="Content-Disposition";
+        String headerValue="attachment;filename=FACTURE"+currentateTime+".pdf";
+        response.setHeader(headerkey,headerValue);
+        pdfFactureNotPayed.export(response,annee);
 
     }
 }

@@ -81,7 +81,13 @@
                     <div th:if="${message}" class="alert alert-success text-center">
                         [[${message}]]
                     </div>
-                    <div align="right"><a th:href="@{/facturation/new}" class="btn btn-outline-primary">add</a></div>
+
+                    <div align="right">
+
+<!--                        <input type="number" class="form-control" name="annee">-->
+<!--                        <a th:href="@{/facturation/NoPayed/annee}" class="btn btn-outline-primary">Print</a>-->
+                        <a th:href="@{/facturation/new}" class="btn btn-outline-info">Add</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table id="datatable2" class="table table-striped dt-responsive nowrap">

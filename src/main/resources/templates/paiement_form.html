@@ -97,7 +97,7 @@
                                     <label class=" col-sm-4 col-form-label">Facture : </label>
                                     <div class="col-sm-8">
                                         <select class="multisteps-form__select form-control" name="ref_facture">
-                                            <option th:value="${ab.id}" th:each="ab:${css}">N°[[${ab.numero_facture}]]---Montant:[[${ab.montant_facture}]]--R:[[${ab.reste_fac}]]</option>
+                                            <option th:value="${ab.id}" th:each="ab:${css}">N°[[${ab.id}]]---Montant:[[${ab.montant_facture}]]--R:[[${ab.reste_fac}]]</option>
                                         </select>
                                     </div>
                                 </div>

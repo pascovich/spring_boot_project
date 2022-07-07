@@ -15,4 +15,6 @@ public interface PdfFactureRepository extends CrudRepository<VueFactute,Integer>
     //Iterable<Facturation> facturer(int id);
     Iterable<VueFactute> facturer(int id);
 
+
+
 }
